@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Skriv en tekst og trykk på knappen eller press enter for å få antall vokaler i teksten og få reverse tekst.</h3>
+    
+    <input id="input" type="text" value="">
+    <button id="button2" onclick="submit()" >Submit</button><br /><br />
+    <div id="app"></div>
+
+    <script>
+       
+        function submit() {
+            let inputText = document.getElementById('input').value;
+            let vokaler = ['a', 'e', 'i', 'o', 'u', 'y', 'æ', 'ø', 'å'];
+            let count = 0;
+            let reverseText = '';
+           
+
+            for(let i = 0; i < inputText.length; i++) {
+                
+                for (let j=0; j < vokaler.length; j++) {
+                    
+                    if (inputText[i].toLowerCase() == vokaler[j]) {
+                        count++;
+                       
+                    }
+                }
+            
+            }
+
+
+            for (let q = inputText.length - 1; q >= 0; q--) {
+                reverseText = reverseText + inputText[q];
+               
+            }
+
+            document.getElementById('app').innerHTML = 'Antall vokaler i "' + inputText + '" er ' + count + ' og reverse teksten er - ' + reverseText;
+
+        }
+            // Takes input on Enter key press 
+            var input = document.getElementById("input");
+            input.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") 
+                {
+                event.preventDefault();
+                document.getElementById("button2").click();
+                }
+            });
+
+    </script>
+</body>
+</html>
